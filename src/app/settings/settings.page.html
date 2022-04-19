@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Settings</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen class="ion-padding">
+  <ion-text><h1>Server Address</h1></ion-text>
+  <ion-item class="rounded-corner">
+    <ion-label position="fixed">IP</ion-label>
+    <ion-input
+      placeholder="192.168.0.10"
+      maxlength="15"
+      [name]="ip"
+      [value]="ip"
+      [(ngModel)]="ip"
+      required="true"
+    ></ion-input>
+  </ion-item>
+  <ion-item class="rounded-corner">
+    <ion-label position="fixed" inputmode="decimal">Port</ion-label>
+    <ion-input
+      placeholder="8546"
+      type="number"
+      inputmode="numeric"
+      maxlength="4"
+      [name]="port"
+      [value]="port"
+      required="true"
+      [(ngModel)]="port"
+    ></ion-input>
+  </ion-item>
+  <section class="setting-buttons">
+    <ion-button expand="block" shape="round" (click)="test()">
+      <ion-icon slot="start" name="send"></ion-icon>
+      Test
+    </ion-button>
+    <ion-button
+      expand="block"
+      shape="round"
+      color="danger"
+      (click)="clearData()"
+    >
+      <ion-icon slot="start" name="trash"></ion-icon>
+      Clear
+    </ion-button>
+    <ion-button
+      expand="block"
+      shape="round"
+      color="secondary"
+      (click)="saveData()"
+    >
+      <ion-icon slot="start" name="save"></ion-icon>
+      Save
+    </ion-button>
+  </section>
+</ion-content>

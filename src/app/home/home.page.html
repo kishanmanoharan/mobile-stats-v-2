@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Home</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div id="error" *ngIf="!data">
+    <ion-text
+      ><h2>An error occured</h2>
+      <p>Please enter the correct address in Settings</p></ion-text
+    >
+    <ion-button routerLink="/settings" [routerLink]="['/settings']">
+      <ion-icon name="settings"></ion-icon>
+      Settings</ion-button
+    >
+  </div>
+  <div id="loading" *ngIf="data">
+    <ion-text
+      ><h2>Loading Data</h2>
+      <p>Please wait</p></ion-text
+    ><ion-spinner></ion-spinner>
+  </div>
+  <div id="stats" *ngIf="data">
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <div id="cpu" class="stat">
+            <h3>{{ data[0].name }}</h3>
+            <h2>Load: {{ cpu.load }}%</h2>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col
+          ><div id="gpu" class="stat">
+            <h3>{{ data[2].name }}</h3>
+            <h2>Load: {{ gpu.load }}%</h2>
+          </div></ion-col
+        >
+      </ion-row>
+      <ion-row>
+        <ion-col
+          ><div id="ram" class="stat">
+            <h3>{{ data[1].name }}</h3>
+            <h2>Load: {{ ram.load }}%</h2>
+          </div></ion-col
+        >
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>
