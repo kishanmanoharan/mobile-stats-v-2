@@ -1,0 +1,8 @@
+{
+  "name": "MobileStatsV2",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular",
+  "id": "26bdd07b"
+}

@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "MobileStatsV2",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}
