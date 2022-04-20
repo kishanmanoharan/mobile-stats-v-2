@@ -133,7 +133,7 @@ export class HomePage implements OnInit, OnDestroy {
     }
   };
 
-  setVisibility = async () => {
+  setVisibility = () => {
     const div = document.getElementById('stats').clientHeight;
     document.getElementById('cpu').style.height = div / 3.3 + 'px';
     document.getElementById('gpu').style.height = div / 3.3 + 'px';
@@ -141,5 +141,56 @@ export class HomePage implements OnInit, OnDestroy {
 
     document.getElementById('loading').style.opacity = '0';
     document.getElementById('stats').style.opacity = '1';
+    this.setBackground();
+  };
+
+  setBackground = () => {
+    document.getElementById('cpu').style.backgroundPositionY =
+      this.cpu.load + '%';
+    document.getElementById('cpu').style.backgroundColor = this.getColor(
+      this.cpu.load
+    );
+    document.getElementById('gpu').style.backgroundPositionY =
+      this.gpu.load + '%';
+    document.getElementById('gpu').style.backgroundColor = this.getColor(
+      this.gpu.load
+    );
+    document.getElementById('ram').style.backgroundPositionY =
+      this.ram.load + '%';
+    document.getElementById('ram').style.backgroundColor = this.getColor(
+      this.ram.load
+    );
+  };
+
+  getColor = (load: number) => {
+    if (load >= 80) {
+      return 'rgba(237, 87, 107, 0.8)';
+    } else if (load >= 60) {
+      return 'rgba(255, 202, 34, 0.8)';
+    } else {
+      return 'rgba(66, 215, 125, 0.8)';
+    }
   };
 }
+// linear-gradient(0deg, rgba(0,255,46,1) 0%, rgba(210,45,8,1) 43%);
+
+// setBackground = () => {
+//   // const cpuText = `linear-gradient(0deg, ${this.getColor(
+//   //   this.cpu.load
+//   // )} 0%, rgba(36, 36, 36, 1) ${this.cpu.load}%)`;
+//   document.getElementById('cpu').style.backgroundColor = this.getColor(
+//     this.cpu.load
+//   );
+//   // const gpuText = `linear-gradient(0deg, ${this.getColor(
+//   //   this.gpu.load
+//   // )} 0%, rgba(36, 36, 36, 1) ${this.gpu.load}%)`;
+//   document.getElementById('gpu').style.backgroundColor = this.getColor(
+//     this.gpu.load
+//   );
+//   // const ramText = `linear-gradient(0deg, ${this.getColor(
+//   //   this.ram.load
+//   // )} 0%, rgba(36, 36, 36, 1) ${this.ram.load}%)`;
+//   document.getElementById('ram').style.backgroundColor = this.getColor(
+//     this.ram.load
+//   );
+// };
